@@ -1,20 +1,24 @@
 class MouseController < WebsocketRails::BaseController
+  before_action :authenticate_user!
+
   def initialize_session
-    # perform application setup here
-    controller_store[:message_count] = 0
   end
 
   def create
+  	target.send_message :create, message, namespace: 'mouse'
   end
 
   def update
+    target.send_message :update, message, namespace: 'mouse'
   end
 
   def destroy
+    target.send_message :destroy, message, namespace: 'mouse'
   end
 
   private
 
-  def create_params
+  def target
+    WebsocketRails.users[message[:user_id]]
   end
 end
