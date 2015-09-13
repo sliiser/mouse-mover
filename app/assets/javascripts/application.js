@@ -43,6 +43,7 @@ function sendMouseLoc(user_id){
 
 function handleCreate(message){
   document.body.style.cursor = 'none';
+  document.body.style.pointerEvents = 'none';
   $('#myCursor').show();
 }
 function handleUpdate(message){
@@ -51,5 +52,6 @@ function handleUpdate(message){
 }
 function handleDestroy(message){
   document.body.style.cursor = 'auto';
+  document.body.style.pointerEvents = 'auto';
   $('#myCursor').hide();
 }
